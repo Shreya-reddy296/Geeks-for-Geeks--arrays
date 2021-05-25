@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int eq(int a[], int n)
+{
+    int i, j;
+    int leftsum, rightsum;
+    for (i = 0; i < n; ++i)
+    {    
+        leftsum = 0;
+        for (j = 0; j < i; j++)
+            leftsum += arr[j];
+ 
+        rightsum = 0;
+        for (j = i + 1; j < n; j++)               //Brute force approach
+            rightsum += arr[j];
+        if (leftsum == rightsum)
+            return i;
+    }
+ 
+    /* return -1 if no equilibrium
+    index is found */
+    return -1;
+}
+int main()
+{
+    int a[] = { -7, 1, 5, 2, -4, 3, 0 };
+    int n= sizeof(a) / sizeof(a[0]);
+    cout << equilibrium(a, n);
+    return 0;
+}
