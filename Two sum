@@ -1,0 +1,93 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool two_sum(int a[], int len ,
+                           int x )
+{
+    int l, r;
+    sort(a, a + len);
+
+    l = 0;
+    r = len - 1;
+    while (l < r) {
+        if (a[l] + a[r] == sum)
+            return 1;
+        else if (a[l] + a[r] < sum)
+            l++;
+        else(a[i] + a[j] > sum)
+            r--;
+    }
+    return 0;                                                                                //Time Complexity -Mergesort is used for sorting O(nlogn)
+                                                                                             //Space Complexity O(n)
+ 
+}
+int main()
+{
+    int a[] = { 1, 4, 45, 6, 10, -8 };
+    int x = 16;
+    int len = sizeof(a) / sizeof(a[0]);
+
+    if (hasArrayTwoCandidates(A, len, x))
+        cout << "Array has two elements"
+                " with given sum";
+    else
+        cout << "Array doesn't have two"
+                " elements with given sum";
+ 
+    return 0;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Optimized Code--
+#include <bits/stdc++.h>
+using namespace std;
+ 
+void two_sum(int arr[], int len, int target)
+{
+        vector<int> ret;
+        unordered_map<int,int>m;
+        int diff;
+        for(int i=0;i<len;i++)
+        {
+            diff=target-arr[i];
+            if(m.find(diff)!=m.end() && m.find(diff)->second!=i)
+            {
+                ret.push_back(i);
+                ret.push_back(m.find(diff)->second);
+                return ret;
+            }
+            m[nums[i]]=i;
+        }
+        return ret;
+}
+int main()
+{
+    int A[] = { 1, 4, 45, 6, 10, 8 };
+    int n = 16;
+    int arr_size = sizeof(A) / sizeof(A[0]);
+ 
+    cout<<two_sum(A, arr_size, n);
+ 
+    return 0;
+}
+
+
+
+
+
