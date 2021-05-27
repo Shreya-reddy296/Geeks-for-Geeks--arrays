@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+ 
+int findSingle(int ar[], int ar_size)
+{
+      
+        int res = ar[0];
+        for (int i = 1; i < ar_size; i++)
+            res = res ^ ar[i];
+ 
+        return res;
+}
+int main()
+{
+        int ar[] = {2, 3, 5, 4, 5, 3, 4};
+        int n = sizeof(ar);
+        cout << "Element occurring once is "
+             << findSingle(ar, n);
+ 
+ }
+ 
+ ////////////////////////////
+ 
+ #include <bits/stdc++.h>
+ using namespace std;
+int singleNumber(int nums[],int n)
+{
+    map<int,int>m;
+    long sum1=0,sum2=0;
+    for(int i=0;i<n;i++)
+    {
+       if(m[nums[i]]==0)
+       {
+            sum1=sum1+nums[i];
+            m[nums[i]]++;
+       }
+     sum2=sum2+nums[i];
+    }
+    return 2*(sum1)-sum2;
+    
+}
+int main()
+{
+    int a[] = {2, 3, 5, 4, 5, 3, 4};
+    int n = 7;
+    cout << singleNumber(a,n) << "\n";
+}
