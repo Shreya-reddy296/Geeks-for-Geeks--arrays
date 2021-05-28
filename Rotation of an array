@@ -1,0 +1,158 @@
+Juggling Algorithm
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
+#include <bits/stdc++.h>
+using namespace std;
+int gcd(int a, int b)
+{
+      if(b==0)
+         return a;
+      else
+         gcd(b,a%b);
+
+}
+void leftRotate(int a[], int k, int n)
+{
+    k=k%n;
+    gcd1=gcd(k,n);
+    for (int i = 0; i < gcd1; i++)
+    {
+        int temp = arr[i];
+        int j = i;
+ 
+        while (1) {
+            int d = j + k;
+            if (d >= n)
+                d = d - n;
+ 
+            if (d== i)
+                break;
+ 
+            arr[j] = arr[d];
+            j = d;
+        }
+        arr[j] = temp;
+    }
+        
+    
+
+}
+
+ 
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+}
+
+int main()
+{
+    int arr[] = { 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    // Function calling
+    leftRotate(arr, 3, n);
+    printArray(arr, n);
+ 
+    return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Using Temporary array
+/////////////////////////////////////////////////
+#include <bits/stdc++.h>
+using namespace std;
+void leftRotate(int a[], int k, int n)
+{
+    for(int i=0;i<k;i++)
+    {
+        temp[i]=0;
+    }
+    for(int i=0;i<k;i++)
+    {
+        temp[i]=a[i];
+        a[i]=0;
+    }
+    int j=0;
+    for(int i=k;i<n;i++)
+    {
+          a[j]=a[k];
+          j++;
+    }
+    for(i=0;i<k;i++)
+    {
+         a[n-2]=temp[i];
+         n=n+1;
+    }
+}
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+}
+int main()
+{
+    int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int k=2;
+    leftRotate(arr, k, n);
+    printArray(arr, n);
+ 
+    return 0;
+}
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Rotate one by one---
+
+#include <bits/stdc++.h>
+using namespace std;
+void leftRotate(int a[], int k, int n)
+{
+   for(int i=0;i<k;i++)
+   {
+      leftrotatebyOne(a,n);
+   }
+}
+void leftrotatebyOne(int a[], int n)
+{
+    temp=a[0];
+    for(int i=1;i<n-1;i++)
+    {
+        a[i]=a[i+1];
+        
+    }
+    a[n-1]=temp;
+}
+void printArray(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+}
+int main()
+{
+    int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
+    int n = sizeof(arr);
+    int k=2;
+    leftRotate(arr, k, n);
+    printArray(arr, n);
+}
+
+
+
